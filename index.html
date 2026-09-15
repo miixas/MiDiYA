@@ -1,44 +1,278 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>MiDiYA - Магазин</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiDiYA — Украшения ручной работы</title>
     <style>
-        body { font-family: Arial, sans-serif; padding: 10px; background: #f9f9f9; }
-        h1 { text-align: center; }
-        .product { 
-            border: 1px solid #ddd; 
-            padding: 15px; 
-            margin-bottom: 15px; 
-            border-radius: 8px; 
-            background: #fff;
+        :root {
+            --pink: #f7c5d0;
+            --pink-dark: #e8a5b5;
+            --pearl: #fdf8f5;
+            --cream: #fdf5e6;
+            --text: #3a3a3a;
         }
-        .price { color: green; font-weight: bold; font-size: 20px; }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--pearl);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        /* Шапка */
+        header {
+            background-color: var(--pink);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 15px;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        /* Баннер */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--pearl) 0%, var(--cream) 100%);
+        }
+
+        .hero h1 {
+            font-size: 30px;
+            font-weight: normal;
+            font-style: italic;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .hero h1 span {
+            font-style: normal;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--pink);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Категории */
+        .categories {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .category {
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px 10px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Товары */
+        .section-title {
+            text-align: center;
+            font-size: 26px;
+            font-weight: normal;
+            margin: 30px 0 20px;
+            font-style: italic;
+        }
+
+        .products {
+            display: flex;
+            justify-content: center;
+            padding: 0 15px 30px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            max-width: 350px;
+            width: 100%;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 280px;
+            background-color: var(--cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-name {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .product-desc {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 12px;
+        }
+
+        .product-price {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--pink-dark);
+            margin-bottom: 15px;
+        }
+
+        .product-btn {
+            display: inline-block;
+            background-color: var(--pink);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Подвал */
+        footer {
+            background-color: var(--pink);
+            color: #fff;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 20px;
+        }
+
+        footer p {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            border: 1px solid #fff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-family: Arial, sans-serif;
+        }
     </style>
 </head>
 <body>
-    <h1>Мой магазин MiDiYA</h1>
 
-    <!-- Товар 1 -->
-    <div class="product">
-        <h2>Название товара 1</h2>
-        <p>Описание: хорошая вещь, всем советую.</p>
-        <p class="price">1500 руб.</p>
+    <!-- Шапка -->
+    <header>
+        <div class="logo">MiDiYA</div>
+        <div class="header-icons">
+            <span>👤</span>
+            <span>♡</span>
+            <span>🛍</span>
+        </div>
+    </header>
+
+    <!-- Баннер -->
+    <section class="hero">
+        <h1>Создавая украшения,<br><span>мы вкладываем в них частичку тепла</span></h1>
+        <p>Украшения ручной работы, от которых ликуют</p>
+        <a href="#catalog" class="btn">Каталог</a>
+    </section>
+
+    <!-- Категории -->
+    <div class="categories">
+        <a href="#" class="category">Серьги</a>
+        <a href="#" class="category">Кольца</a>
+        <a href="#" class="category">Колье</a>
+        <a href="#" class="category">Браслеты</a>
     </div>
 
-    <!-- Товар 2 -->
-    <div class="product">
-        <h2>Название товара 2</h2>
-        <p>Описание: ещё одна классная вещь.</p>
-        <p class="price">2300 руб.</p>
+    <!-- Товар -->
+    <h2 class="section-title">Новинки</h2>
+    <div class="products">
+
+        <div class="product-card">
+            <div class="product-img">
+                <img src="braslet.jpg" alt="Браслет из голубого камня">
+            </div>
+            <div class="product-info">
+                <div class="product-name">Браслет из голубого камня</div>
+                <div class="product-desc">Натуральный камень, ручная работа</div>
+                <div class="product-price">4 700 руб.</div>
+                <a href="#" class="product-btn">Подробнее</a>
+            </div>
+        </div>
+
     </div>
 
-    <!-- Товар 3 -->
-    <div class="product">
-        <h2>Название товара 3</h2>
-        <p>Описание: самый лучший товар.</p>
-        <p class="price">999 руб.</p>
-    </div>
+    <!-- Подвал -->
+    <footer>
+        <p>Подписывайтесь на нас, чтобы первыми узнавать об акциях и новинках</p>
+        <div class="social-links">
+            <a href="#">ФОТОСОЦСЕТЬ</a>
+            <a href="#">НАШ TELEGRAM</a>
+        </div>
+    </footer>
 
 </body>
 </html>
